@@ -2,3 +2,12 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.TablesContainer {
+  display: flex;
+  align-items: row;
+}
+
+.Table {
+  margin: 25px;
+}

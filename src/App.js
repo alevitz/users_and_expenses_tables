@@ -1,38 +1,20 @@
 import "./styles.css";
-import Table from "./Table";
+import { useState } from "react";
+import UsersTable from "./UsersTable";
+import ExpensesTable from "./ExpensesTable";
+import CompanyExpensesTable from "./CompanyExpensesTable";
 
-class User {
-  constructor(
-    id,
-    firstName,
-    lastName,
-    foodExpense = 0,
-    travelExpense = 0,
-    suppliesExpense = 0
-  ) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.expenses = new Expenses();
-    this.totalExpenses =
-      this.foodExpense + this.suppliesExpense + this.travelExpense;
-    this.foodExpense = foodExpense;
-    this.travelExpense = travelExpense;
-    this.suppliesExpense = suppliesExpense;
-  }
-}
+// class Users {
+//   constructor(data = new Map()) {
+//     this.data = data;
+//   }
+// }
 
-class Users {
-  constructor(data = new Map()) {
-    this.data = data;
-  }
-}
-
-class Expenses {
-  constructor(data = new Map()) {
-    this.data = data;
-  }
-}
+// class Expenses {
+//   constructor(data = new Map()) {
+//     this.data = data;
+//   }
+// }
 
 class Expense {
   constructor(id, fullName, category, description, cost) {
@@ -57,13 +39,17 @@ class CompanyExpenses {
 }
 
 export default function App() {
+  const [users, setUsers] = useState([]);
+
   return (
     <div className="App">
       <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
-      <Table />
-      <Table />
-      <Table />
+      <div className="TablesContainer">
+        <UsersTable name="Users" setUsers={setUsers} />
+        <ExpensesTable name="Expenses" />
+        <CompanyExpensesTable name="Company Expenses" />
+      </div>
     </div>
   );
 }
